@@ -1,34 +1,70 @@
-// import { useState } from 'react';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import SignInScreen from './src/Screens/SignInScreen';
-import LicenseAgreement from './src/Screens/LicenseAgreement';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import SignInScreen from "./Views/Screens/SignInScreen/SignInScreen";
+// import LicenseAgreement from './src/Views/Screens/LicenseAgreement';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import SetUpPassWord from "./Views/Screens/SetUpPassword/SetUpPassword";
+import Loader from "./Views/Components/Loader";
+import modal from "./Views/Screens/Modal/ModalUp";
+import ForgotPassword from "./Views/Screens/ForgotPassword";
 
-// const Stack = createNativeStackNavigator();
+console.reportErrorsAsExceptions = false;
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  // useState();
+  // const [initialRouteName, setInitialRouteName] = React.useState("");
+
+  // React.useEffect(() => {
+  //   setTimeout(() => {
+  //     authUser();
+  //   }, 2000);
+  // }, []);
+
+  // const authUser = async () => {
+  //   try {
+  //     let userData = await AsyncStorage.getItem("userData");
+  //     if (userData) {
+  //       userData = JSON.parse(userData);
+  //       if (userData.loggedIn) {
+  //         setInitialRouteName("HomeScreen");
+  //       } else {
+  //         setInitialRouteName("LoginScreen");
+  //       }
+  //     } else {
+  //       setInitialRouteName("RegistrationScreen");
+  //     }
+  //   } catch (error) {
+  //     setInitialRouteName("RegistrationScreen");
+  //   }
+  // };
   return (
-    // <NavigationContainer>
-    //   <Stack.Navigator initialRouteName="Log in">
-    //     <Stack.Screen name='Log in' component={SignInScreen}/>
-    //     <Stack.Screen name='License Agreement' component={LicenseAgreement}/>
-    //   </Stack.Navigator>
-    // </NavigationContainer>
-    <View style={styles.container}>
-      <SignInScreen/>
-      {/* <LicenseAgreement/> */}
-    </View>
+    <NavigationContainer>
+      {/* {!initialRouteName ? (
+        <Loader visible={false} />
+      ) : ( */}
+      <Stack.Navigator
+        screenOptions={{ headerShown: false }}
+        // initialRouteName="SetUp"
+      >
+        {/* <Stack.Screen name="SetUp" component={SetUpPassWord} /> */}
+        <Stack.Screen name="modalScreen" component={modal} />
+        <Stack.Screen name="SignIn" component={SignInScreen} />
+
+        {/* <Stack.Screen name='License Agreement' component={LicenseAgreement}/> */}
+        {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} /> */}
+      </Stack.Navigator>
+      {/* )} */}
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
-
-
+// const styles = StyleSheet.create({
+//   container: {
+//     width: "100%",
+//     height: "100%",
+//     backgroundColor: "#fff",
+//   },
+// });

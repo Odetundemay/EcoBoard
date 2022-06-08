@@ -1,12 +1,21 @@
 import React from "react";
-import { Text, StyleSheet, View, ScrollView } from "react-native";
-import CustomButton from "../../Components/CustomButton";
+import {
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+// import { styles, button } from "../../src/Components/styles/Styles";
 
-export default function LicenseAgreement() {
+export default function LicenseAgreement({ navigation }) {
   return (
     <View style={styles.container}>
-      <ScrollView>
-        {/* <Text style= {styles.header}>License Agreement</Text> */}
+      <Text style={styles.header}>Ecobank policy</Text>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        alwaysBounceVertical={false}
+        bounces={false}
+      >
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rutrum semper
           pellentesque ut ipsum tortor, magna egestas. Dolor volutpat aliquet
@@ -86,34 +95,17 @@ export default function LicenseAgreement() {
           pretium pellentesque. Lectus ipsum, vitae sed odio porta in.
         </Text>
       </ScrollView>
-      <CustomButton
-        style={styles.text}
-        placeholder="Yes, I agree"
-      ></CustomButton>
-      <Text style={styles.texts}>No, I disagree</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("PersonalHistory")}>
+        <View style={button.primary}>
+          <Text style={button.Text}>Yes, I agree</Text>
+        </View>
+      </TouchableOpacity>
+      <Text
+        style={styles.texts}
+        onPress={() => navigation.navigate("SignInScreen")}
+      >
+        No, I disagree
+      </Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // padding: 20,
-    paddingRight: 20,
-    paddingLeft: 20,
-  },
-  header: {
-    paddingTop: 40,
-    fontSize: 20,
-    color: "#4385B7",
-    fontWeight: "500",
-    paddingBottom: 20,
-  },
-  texts: {
-    color: "#BED600",
-    textAlign: "center",
-    paddingTop: 25,
-    paddingBottom: 20,
-    fontWeight: "Bold",
-  },
-});
