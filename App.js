@@ -53,7 +53,7 @@ export default function App() {
       >
         {/* <Stack.Screen name="SetUp" component={SetUpPassWord} /> */}
         <Stack.Screen name="Home" component={HomeScreen} />
-        {/* <Stack.Screen name="SignIn" component={SignInScreen} /> */} 
+        {/* <Stack.Screen name="SignIn" component={SignInScreen} /> */}
         {/* <Stack.Screen name="modalScreen" component={ModalUp} /> */}
         {/* <Stack.Screen name='License Agreement' component={LicenseAgreement}/> */}
         {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} /> */}

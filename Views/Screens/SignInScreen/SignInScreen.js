@@ -14,10 +14,8 @@ import Logo from "../../../assests/images/Logo.png";
 import STYLES from "../SetUpPassword/styles";
 import CustomInput from "../../Components/CustomInput/CustomInput";
 import CustomButton from "../../Components/CustomButton/CustomButton";
-import Loader from "../../Components/Loader";
+// import Loader from "../../Components/Loader";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import ForgotPassword from "../ForgotPassword";
-// import Person from "../../../assests/images/Personal.png";
 
 export default function SetUpPassWord({ navigation }) {
   const [inputs, setInputs] = React.useState({
@@ -55,14 +53,14 @@ export default function SetUpPassWord({ navigation }) {
 
   const register = () => {
     setLoading(true);
-    setTimeout(() => {
-      try {
-        setLoading(false);
-        AsyncStorage.setItem("user", JSON.stringify(inputs));
-      } catch (error) {
-        Alert.alert("Error", "Something went wrong");
-      }
-    }, 3000);
+    // setTimeout(() => {
+    //   try {
+    //     setLoading(false);
+    //     AsyncStorage.setItem("user", JSON.stringify(inputs));
+    //   } catch (error) {
+    //     Alert.alert("Error", "Something went wrong");
+    //   }
+    // }, 3000);
   };
 
   const handleOnChange = (text, input) => {
@@ -74,7 +72,7 @@ export default function SetUpPassWord({ navigation }) {
 
   return (
     <SafeAreaView style={{ backgroundColor: COLORS.white, flex: 1 }}>
-      <Loader visible={loading} />
+      {/* <Loader visible={loading} /> */}
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingTop: 50, paddingHorizontal: 20 }}
@@ -133,11 +131,7 @@ export default function SetUpPassWord({ navigation }) {
           </TouchableOpacity>
         </View>
 
-        <CustomButton
-          title="Sign In"
-          onPress={validate}
-          // onPress={() => navigation.navigate("modalScreen")}
-        />
+        <CustomButton title="Sign In" onPress={validate} />
         {/* <ModalUp
           imgSource={Person}
           onPress={() => navigation.navigate("SignIn")}

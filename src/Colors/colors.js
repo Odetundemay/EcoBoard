@@ -8,6 +8,7 @@ const COLORS = {
   textInputGrey: "#F7F7F7",
   red: "#FF0000",
   focusBlue: "#3F81B4",
+  darkBlue: "#1F1742",
 };
 
 export default COLORS;

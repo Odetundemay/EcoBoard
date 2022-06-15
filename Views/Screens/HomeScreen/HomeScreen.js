@@ -1,5 +1,13 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { SafeAreaView, ScrollView, View, Text, Image } from "react-native";
+import {
+  SafeAreaView,
+  ScrollView,
+  View,
+  Text,
+  Image,
+  TouchableWithoutFeedback,
+  FlatList,
+} from "react-native";
 import React from "react";
 import COLORS from "../../../src/Colors/colors";
 import STYLES from "../SetUpPassword/styles";
@@ -13,9 +21,31 @@ import Profile from "../../../assests/images/profilePhoto.png";
 import Congrats from "../../../assests/images/Congrats.png";
 import EcobankLogo from "../../../assests/images/EcobankLogo.png";
 import RocketLogo from "../../../assests/images/RocketIcon.png";
+import DATA from "../../../src/data/data";
 
-export default function HomeScreen({ navigation }) {
+// const data = [
+//   {
+//     title: "React Native",
+//     subHeader: "Input your Deatails",
+//     description: "JS framework",
+//   },
+//   {
+//     title: "React ",
+//     subHeader: "Input your Deatails",
+//     description: "JS framework",
+//   },
+// ];
+export default function HomeScreen() {
+  // renderItem = ({ item }) => <DATA item={item} />;
+
   return (
+    // <View style={{ flex: 1, paddingTop: 50 }}>
+    //   <FlatList
+    //     data={data}
+    //     renderItem={this.renderItem}
+    //     keyExtractor={(index, _) => index + ""}
+    //   />
+    // </View>
     <SafeAreaView style={{ backgroundColor: COLORS.white, flex: 1 }}>
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -160,7 +190,7 @@ export default function HomeScreen({ navigation }) {
             <View
               style={{
                 backgroundColor: "#9FC4E1",
-                width: 180,
+                width: 150,
                 flexDirection: "row",
                 alignItems: "center",
                 paddingLeft: 10,
@@ -188,6 +218,7 @@ export default function HomeScreen({ navigation }) {
             marginTop: 30,
             flexDirection: "row",
             borderRadius: 4,
+            flex: 1,
           }}
         >
           <View
@@ -196,7 +227,7 @@ export default function HomeScreen({ navigation }) {
               flexDirection: "row",
               alignItems: "center",
               paddingLeft: 20,
-              width: 180,
+              width: 150,
               height: 51,
               marginLeft: 5,
               marginTop: 5,
@@ -239,15 +270,18 @@ export default function HomeScreen({ navigation }) {
                 borderRadius: 32 / 2,
                 alignItems: "center",
                 justifyContent: "center",
-                marginRight: 10,
+                marginRight: 5,
               }}
             >
               <FontAwesome5 name="socks" size={24} color="#D3D3D3" />
             </View>
 
-            <Text style={{ fontSize: 16 }}>Post Onboarding</Text>
+            <Text style={{ fontSize: 16, color: "#D3D3D3" }}>
+              Post Onboarding
+            </Text>
           </View>
         </View>
+
       </ScrollView>
     </SafeAreaView>
   );
