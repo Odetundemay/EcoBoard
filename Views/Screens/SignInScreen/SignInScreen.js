@@ -17,8 +17,7 @@ import CustomButton from "../../Components/CustomButton/CustomButton";
 import Loader from "../../Components/Loader";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ForgotPassword from "../ForgotPassword";
-import ModalUp from "../Modal/ModalUp";
-import Person from "../../../assests/images/Personal.png";
+// import Person from "../../../assests/images/Personal.png";
 
 export default function SetUpPassWord({ navigation }) {
   const [inputs, setInputs] = React.useState({
@@ -50,6 +49,7 @@ export default function SetUpPassWord({ navigation }) {
 
     if (valid) {
       register();
+      navigation.navigate("modalScreen");
     }
   };
 
@@ -135,8 +135,8 @@ export default function SetUpPassWord({ navigation }) {
 
         <CustomButton
           title="Sign In"
-          // onPress={validate}
-          onPress={() => navigation.navigate("modalScreen")}
+          onPress={validate}
+          // onPress={() => navigation.navigate("modalScreen")}
         />
         {/* <ModalUp
           imgSource={Person}

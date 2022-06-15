@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import CustomInput from "../../Components/CustomInput/CustomInput";
-// import { button } from "../../src/Components/styles/Styles";
+import { button } from "../../src/Components/styles/Styles";
 import RadioGroup from "react-native-radio-buttons-group";
 import DropDown from "../../../assests/images/DropDown.png";
 

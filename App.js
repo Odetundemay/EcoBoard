@@ -7,7 +7,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SetUpPassWord from "./Views/Screens/SetUpPassword/SetUpPassword";
 import Loader from "./Views/Components/Loader";
-import modal from "./Views/Screens/Modal/ModalUp";
+import ModalUp from "./Views/Screens/Modal/Modal1/ModalUp";
+
+import HomeScreen from "./Views/Screens/HomeScreen/HomeScreen";
 import ForgotPassword from "./Views/Screens/ForgotPassword";
 
 console.reportErrorsAsExceptions = false;
@@ -50,9 +52,9 @@ export default function App() {
         // initialRouteName="SetUp"
       >
         {/* <Stack.Screen name="SetUp" component={SetUpPassWord} /> */}
-        <Stack.Screen name="modalScreen" component={modal} />
-        <Stack.Screen name="SignIn" component={SignInScreen} />
-
+        <Stack.Screen name="Home" component={HomeScreen} />
+        {/* <Stack.Screen name="SignIn" component={SignInScreen} /> */} 
+        {/* <Stack.Screen name="modalScreen" component={ModalUp} /> */}
         {/* <Stack.Screen name='License Agreement' component={LicenseAgreement}/> */}
         {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} /> */}
       </Stack.Navigator>
