@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   ScrollView,
@@ -8,41 +8,25 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
 } from "react-native";
-import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import PropTypes from "prop-types";
 
-export default function DATA() {
-  const proptype = {
-    item: PropTypes.object,
-  };
+export default function DATA({ item }) {
+  const [hideUp, setHideUp] = useState(false);
 
-  state = { isSelected: false };
-  onPress = () => {
-    this.setState((prevState, prevProps) => ({
-      isSelected: !prevState.isSelected,
-    }));
-  };
-
-  const [hideUp, setHideUp] = React.useState();
-
-  renderDetails = () => (
+  const renderDetails = (
     <View>
       <Text style={{ flex: 1, fontSize: 16, color: "grey", paddingTop: 10 }}>
-        {this.props.item.description}
+        {item.description}
       </Text>
     </View>
   );
-
-  const { isSelected } = [this.state];
   return (
     <View style={{ flex: 1, flexDirection: "column", margin: 10 }}>
       <TouchableWithoutFeedback>
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <View>
-            <Text style={{ flex: 1, fontSize: 20 }}>
-              {this.props.item.title}
-            </Text>
+            <Text style={{ flex: 1, fontSize: 20 }}>{item.title}</Text>
             <View
               style={{
                 borderWidth: 1,
@@ -52,22 +36,22 @@ export default function DATA() {
                 marginTop: 10,
               }}
             >
-              <Text style={{ padding: 5 }}>{this.props.item.subHeader}</Text>
+              <Text style={{ padding: 5, fontSize: 10 }}>{item.subHeader}</Text>
             </View>
           </View>
-          <TouchableOpacity onPress={this.onPress}>
-            <View style={{ alignItems: "flex-end" }}>
-              <Entypo
-                onPress={() => setHideUp(!hideUp)}
-                name={hideUp ? "chevron-down" : "downcircleo"}
-                size={24}
-                color="#A2A2A3"
-              />
-            </View>
-          </TouchableOpacity>
+          {/* <TouchableOpacity onPress={onPress}> */}
+          <View style={{ alignItems: "flex-end" }}>
+            <AntDesign
+              onPress={() => setHideUp(!hideUp)}
+              name={hideUp ? "upcircleo" : "downcircleo"}
+              size={24}
+              color="#A2A2A3"
+            />
+          </View>
+          {/* </TouchableOpacity> */}
         </View>
       </TouchableWithoutFeedback>
-      {this.state.isSelected && this.renderDetails()}
+      {hideUp && renderDetails}
     </View>
     //   {
     //     category: "Personal History",

@@ -8,7 +8,7 @@ import {
   TouchableWithoutFeedback,
   FlatList,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import COLORS from "../../../src/Colors/colors";
 import STYLES from "../SetUpPassword/styles";
 import { Feather } from "@expo/vector-icons";
@@ -16,6 +16,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
+import CircularProgress from "react-native-circular-progress-indicator";
 
 import Profile from "../../../assests/images/profilePhoto.png";
 import Congrats from "../../../assests/images/Congrats.png";
@@ -23,33 +24,28 @@ import EcobankLogo from "../../../assests/images/EcobankLogo.png";
 import RocketLogo from "../../../assests/images/RocketIcon.png";
 import DATA from "../../../src/data/data";
 
-// const data = [
-//   {
-//     title: "React Native",
-//     subHeader: "Input your Deatails",
-//     description: "JS framework",
-//   },
-//   {
-//     title: "React ",
-//     subHeader: "Input your Deatails",
-//     description: "JS framework",
-//   },
-// ];
+const data = [
+  {
+    title: "React Native",
+    subHeader:
+      "input the details for your personal details, \naddress and employee history ",
+    description: "JS framework",
+  },
+  {
+    title: "React ",
+    subHeader: "Input your Deatails",
+    description: "JS framework",
+  },
+];
 export default function HomeScreen() {
-  // renderItem = ({ item }) => <DATA item={item} />;
+  const [value, setValue] = useState();
+  const renderItem = ({ item }) => <DATA item={item} />;
 
   return (
-    // <View style={{ flex: 1, paddingTop: 50 }}>
-    //   <FlatList
-    //     data={data}
-    //     renderItem={this.renderItem}
-    //     keyExtractor={(index, _) => index + ""}
-    //   />
-    // </View>
     <SafeAreaView style={{ backgroundColor: COLORS.white, flex: 1 }}>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingTop: 50, paddingHorizontal: 20 }}
+        contentContainerStyle={{ paddingTop: 10, paddingHorizontal: 20 }}
       >
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <Feather name="menu" size={24} color="#6C63FF" />
@@ -196,6 +192,7 @@ export default function HomeScreen() {
                 paddingLeft: 10,
                 paddingTop: 5,
                 paddingBottom: 5,
+                borderRadius: 4,
               }}
             >
               <MaterialIcons
@@ -218,7 +215,7 @@ export default function HomeScreen() {
             marginTop: 30,
             flexDirection: "row",
             borderRadius: 4,
-            flex: 1,
+            height: 59,
           }}
         >
           <View
@@ -226,7 +223,7 @@ export default function HomeScreen() {
               backgroundColor: COLORS.white,
               flexDirection: "row",
               alignItems: "center",
-              paddingLeft: 20,
+              padding: 20,
               width: 150,
               height: 51,
               marginLeft: 5,
@@ -282,6 +279,13 @@ export default function HomeScreen() {
           </View>
         </View>
 
+        <View style={{ paddingTop: 50 }}>
+          <FlatList
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => index + item.title + ""}
+          />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
