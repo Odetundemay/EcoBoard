@@ -3,7 +3,7 @@ const COLORS = {
   green: "#BED600",
   white: "#fff",
   subGrey: "#A0A0A0",
-  instructBlack: "#F4F4F4",
+  instructBlack: "#808080",
   textInputBlack: "#242424",
   textInputGrey: "#F7F7F7",
   red: "#FF0000",

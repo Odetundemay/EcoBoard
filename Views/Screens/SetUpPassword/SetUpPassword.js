@@ -7,6 +7,7 @@ import {
   Text,
   Keyboard,
   Alert,
+  KeyboardAvoidingView,
 } from "react-native";
 import COLORS from "../../../src/Colors/colors";
 import Logo from "../../../assests/images/Logo.png";
@@ -69,12 +70,30 @@ export default function SetUpPassWord({ navigation }) {
   };
 
   return (
-    <SafeAreaView style={{ backgroundColor: COLORS.white, flex: 1 }}>
-      <Loader visible={loading} />
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingTop: 50, paddingHorizontal: 20 }}
-      >
+    <SafeAreaView
+      style={{
+        backgroundColor: COLORS.white,
+        flex: 1,
+        paddingTop: 30,
+        paddingHorizontal: 20,
+      }}
+    >
+      {/* <Loader visible={loading} /> */}
+      {/* <KeyboardAvoidingView
+        behavior="padding"
+        style={{
+          backgroundColor: COLORS.white,
+          flex: 1,
+          paddingTop: 30,
+          paddingHorizontal: 20,
+          
+        }}
+      > */}
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingTop: 30, paddingHorizontal: 20 }}
+          onPress={Keyboard.dismiss}
+        >
         <View style={STYLES.root}>
           <Image source={Logo} style={STYLES.Logo} resizeMode="contain"></Image>
           <View style={STYLES.powered}>
@@ -93,21 +112,21 @@ export default function SetUpPassWord({ navigation }) {
         <Text style={{ color: COLORS.blue, fontSize: 30, paddingBottom: 10 }}>
           Set up your password
         </Text>
-        <Text
+        {/* <Text
           style={{ color: COLORS.subGrey, fontSize: 15, paddingBottom: 20 }}
         >
           Kindly choose a password that you can remember
-        </Text>
-        <View style={{ marginVertical: 20, paddingBottom: 50 }}>
+        </Text> */}
+        <View style={{ marginVertical: 20, paddingBottom: 30 }}>
           <CustomInput
-            label="Email Address"
+            label="Password"
             onChangeText={(text) => handleOnChange(text, "email")}
             error={errors.email}
             onFocus={() => {
               handleError(null, "email");
             }}
           />
-          <Text style={{ color: COLORS.instructBlack }}>
+          <Text style={{ color: COLORS.instructBlack, marginBottom: 20 }}>
             Should contain one letter, one number and be at least 8 characters
             long
           </Text>
@@ -123,7 +142,8 @@ export default function SetUpPassWord({ navigation }) {
         </View>
 
         <CustomButton title="Submit" onPress={validate} />
-      </ScrollView>
+        </ScrollView>
+      {/* </KeyboardAvoidingView> */}
     </SafeAreaView>
   );
 }

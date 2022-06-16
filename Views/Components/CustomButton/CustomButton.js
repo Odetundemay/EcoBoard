@@ -16,7 +16,15 @@ export default function CustomButton({ title, onPress = () => {} }) {
         borderRadius: 4,
       }}
     >
-      <Text style={{ color: COLORS.white, fontSize: 13, fontWeight: "bold" }}>
+      <Text
+        style={{
+          color: COLORS.white,
+          fontSize: 13,
+          fontWeight: "bold",
+          textAlign: "center",
+          alignSelf: "center",
+        }}
+      >
         {title}
       </Text>
     </TouchableOpacity>

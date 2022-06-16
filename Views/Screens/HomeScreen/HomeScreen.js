@@ -7,8 +7,10 @@ import {
   Image,
   TouchableWithoutFeedback,
   FlatList,
+  Platform,
+  TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import COLORS from "../../../src/Colors/colors";
 import STYLES from "../SetUpPassword/styles";
 import { Feather } from "@expo/vector-icons";
@@ -16,7 +18,8 @@ import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
-import CircularProgress from "react-native-circular-progress-indicator";
+// import CircularProgress from "react-native-circular-progress-indicator";
+import * as ImagePicker from "expo-image-picker";
 
 import Profile from "../../../assests/images/profilePhoto.png";
 import Congrats from "../../../assests/images/Congrats.png";
@@ -40,18 +43,50 @@ const data = [
 export default function HomeScreen() {
   const [value, setValue] = useState();
   const renderItem = ({ item }) => <DATA item={item} />;
+  const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
+  const [image, setImage] = useState(null);
+  const [picture, setPicture] = useState(null);
 
+  useEffect(() => {
+    async () => {
+      const galleryStatus =
+        await ImagePicker.requestMediaLibraryPermissionsAsync();
+      setHasGalleryPermission(galleryStatus.status === "granted");
+    };
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+  if (hasGalleryPermission === false) {
+    return <Text>No access to Internal Storage</Text>;
+  }
   return (
-    <SafeAreaView style={{ backgroundColor: COLORS.white, flex: 1 }}>
+    <SafeAreaView
+      style={{ backgroundColor: COLORS.white, flex: 1, paddingTop: 50 }}
+    >
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingTop: 10, paddingHorizontal: 20 }}
       >
-        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+        <View style={{ flexDirection: "row" }}>
           <Feather name="menu" size={24} color="#6C63FF" />
           <View
             style={{
               flexDirection: "column",
+              marginLeft: 50,
+              marginRight: 50,
             }}
           >
             <Text style={{ color: "#141414", fontSize: 18 }}>
@@ -61,22 +96,46 @@ export default function HomeScreen() {
               JohnDoe@yahoo.com
             </Text>
           </View>
-          <Image
-            source={Profile}
-            resizeMode="contain"
+          <View
             style={{
-              height: 45.62,
-              width: 45.62,
+              backgroundColor: "red",
+              width: 45,
+              height: 45,
+              borderRadius: 45 / 2,
+              alignContent: "flex-end",
+              alignItems: "flex-end",
+              alignSelf: "flex-end",
             }}
-          />
+          >
+            <TouchableOpacity
+              onPress={() => pickImage()}
+              style={{
+                width: 45,
+                height: 45,
+                borderRadius: 45 / 2,
+                alignContent: "flex-end",
+                alignItems: "flex-end",
+                alignSelf: "flex-end",
+              }}
+            >
+              {image && (
+                <Image
+                  source={{ uri: image }}
+                  style={{
+                    height: 45,
+                    width: 45,
+                    borderRadius: 45 / 2,
+                  }}
+                />
+              )}
+            </TouchableOpacity>
+          </View>
         </View>
         <View
           style={{
             paddingTop: 40,
             flexDirection: "row",
-            marginLeft: 0,
-            // justifyContent: "center",
-            justifyContent: "space-evenly",
+            justifyContent: "center",
           }}
         >
           <Image
@@ -84,7 +143,14 @@ export default function HomeScreen() {
             resizeMode="contain"
             style={{ height: 50, width: 50 }}
           />
-          <View style={{ justifyContent: "center", paddingLeft: 20 }}>
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              alignContent: "center",
+              paddingLeft: 10,
+            }}
+          >
             <Text
               style={{
                 fontSize: 25,
@@ -132,6 +198,8 @@ export default function HomeScreen() {
             </View>
           </View>
         </View>
+
+        {/* //Id Card */}
         <View
           style={{
             marginTop: 30,
@@ -209,6 +277,7 @@ export default function HomeScreen() {
           </View>
         </View>
 
+        {/* Togle  */}
         <View
           style={{
             backgroundColor: "#F8F8F8",
@@ -218,17 +287,15 @@ export default function HomeScreen() {
             height: 59,
           }}
         >
+          {/* Onboarding */}
           <View
             style={{
               backgroundColor: COLORS.white,
               flexDirection: "row",
               alignItems: "center",
               padding: 20,
-              width: 150,
               height: 51,
-              marginLeft: 5,
-              marginTop: 5,
-              marginBottom: 5,
+              margin: 5,
               borderRadius: 4,
               alignItems: "center",
             }}
@@ -252,11 +319,13 @@ export default function HomeScreen() {
             </View>
             <Text style={{ fontSize: 16, color: "#434343" }}>Onboarding</Text>
           </View>
+
+          {/* post onboarding */}
           <View
             style={{
               flexDirection: "row",
               alignItems: "center",
-              marginLeft: 15,
+              marginLeft: 5,
             }}
           >
             <View
@@ -278,8 +347,7 @@ export default function HomeScreen() {
             </Text>
           </View>
         </View>
-
-        <View style={{ paddingTop: 50 }}>
+        <View style={{ paddingTop: 50, flexDirection: "row", display: "flex" }}>
           <FlatList
             data={data}
             renderItem={renderItem}

@@ -4,7 +4,7 @@ const STYLES = StyleSheet.create({
     alignItems: "center",
   },
   Logo: {
-    height: 200,
+    height: 180,
     width: "100%",
     maxHeight: 350,
   },

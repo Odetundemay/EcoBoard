@@ -4,6 +4,18 @@
     "slug": "EcoBoard",
     "version": "1.0.0",
     "orientation": "portrait",
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "custom photos permission",
+          "cameraPermission": "Allow Ecoboard to open the camera",
+
+          "//": "Disables the microphone permission",
+          "microphonePermission": false
+        }
+      ]
+    ],
 
     "userInterfaceStyle": "light",
     "updates": {

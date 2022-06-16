@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import COLORS from "../../../src/Colors/colors";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { Ionicons } from "@expo/vector-icons";
 export default function CustomInput({
   label,
   iconName,
@@ -13,7 +14,7 @@ export default function CustomInput({
   const [hidePassword, setHidePassword] = React.useState(password);
   const [isFocused, setIsFocused] = React.useState(false);
   return (
-    <View style={{ marginBottom: 20 }}>
+    <View style={{ marginBottom: 0 }}>
       <Text style={style.label}>{label}</Text>
       <View
         style={[
@@ -44,10 +45,11 @@ export default function CustomInput({
           {...props}
         />
         {password && (
-          <Icon
+          <Ionicons
             onPress={() => setHidePassword(!hidePassword)}
-            name={hidePassword ? "eye-outline" : "eye-off-outline"}
-            style={{ color: COLORS.darkBlue, fontSize: 22 }}
+            name={hidePassword ? "eye-off-outline" : "ios-eye-sharp"}
+            color="#A2A2A3"
+            size={24}
           />
         )}
       </View>
