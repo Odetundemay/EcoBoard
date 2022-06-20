@@ -4,13 +4,13 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
+  StyleSheet,
 } from "react-native";
-// import { styles, button } from "../../src/Components/styles/Styles";
 
 export default function LicenseAgreement({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Ecobank policy</Text>
+      <Text style={styles.headerText}>Ecobank policy</Text>
       <ScrollView
         showsVerticalScrollIndicator={false}
         alwaysBounceVertical={false}
@@ -95,13 +95,16 @@ export default function LicenseAgreement({ navigation }) {
           pretium pellentesque. Lectus ipsum, vitae sed odio porta in.
         </Text>
       </ScrollView>
-      <TouchableOpacity onPress={() => navigation.navigate("PersonalHistory")}>
-        <View style={button.primary}>
-          <Text style={button.Text}>Yes, I agree</Text>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("PersonalHistory")}
+        style={styles.yesButton}
+      >
+        <View>
+          <Text style={styles.yesText}>Yes, I agree</Text>
         </View>
       </TouchableOpacity>
       <Text
-        style={styles.texts}
+        style={styles.noButton}
         onPress={() => navigation.navigate("SignInScreen")}
       >
         No, I disagree
@@ -109,3 +112,40 @@ export default function LicenseAgreement({ navigation }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#FFFFFFF",
+    backgroundColor: "white",
+    padding: 20,
+    paddingBottom: 30,
+  },
+  noButton: {
+    color: "#BED600",
+    alignSelf: "center",
+  },
+  yesButton: {
+    marginTop: 15,
+    marginBottom: 10,
+    backgroundColor: "#4385B7",
+    height: 44,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+  },
+  yesText: {
+    color: "white",
+  },
+  headerText: {
+    color: "#4385B7",
+    paddingTop: 30,
+    paddingBottom: 10,
+    textAlign: "left",
+    justifyContent: "flex-start",
+    fontSize: 20,
+    fontFamily: "Roboto",
+    fontWeight: "400",
+  },
+});

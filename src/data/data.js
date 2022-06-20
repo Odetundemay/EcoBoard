@@ -53,22 +53,5 @@ export default function DATA({ item }) {
       </TouchableWithoutFeedback>
       {hideUp && renderDetails}
     </View>
-    //   {
-    //     category: "Personal History",
-    //     subCategory: [
-    //       "Personal Details",
-    //       "Address",
-    //       "Employment Records",
-    //       "Additional",
-    //     ],
-    //   },
-    //   {
-    //     category: "Submit Documents",
-    //     subCategory: [
-    //       "Reciept Aknowledgement",
-    //       "Non-disclosure agreement",
-    //       "Employment Records",
-    //     ],
-    //   },
   );
 }

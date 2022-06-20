@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import SignInScreen from "./Views/Screens/SignInScreen/SignInScreen";
-// import LicenseAgreement from './src/Views/Screens/LicenseAgreement';
+import LicenseAgreement from "./Views/Screens/LicenseAgreement/LicenseAgreement";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -11,6 +11,7 @@ import ModalUp from "./Views/Screens/Modal/Modal1/ModalUp";
 
 import HomeScreen from "./Views/Screens/HomeScreen/HomeScreen";
 import ForgotPassword from "./Views/Screens/ForgotPassword";
+import PersonalHistory from "./Views/Screens/PersonalHistory/PersonalHistory";
 
 console.reportErrorsAsExceptions = false;
 
@@ -52,10 +53,11 @@ export default function App() {
         // initialRouteName="SetUp"
       >
         {/* <Stack.Screen name="SetUp" component={SetUpPassWord} /> */}
-        <Stack.Screen name="Home" component={HomeScreen} />
+        {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
         {/* <Stack.Screen name="SignIn" component={SignInScreen} /> */}
         {/* <Stack.Screen name="modalScreen" component={ModalUp} /> */}
-        {/* <Stack.Screen name='License Agreement' component={LicenseAgreement}/> */}
+        {/* <Stack.Screen name="License Agreement" component={LicenseAgreement} /> */}
+        <Stack.Screen name="Personal History" component={PersonalHistory} />
         {/* <Stack.Screen name="ForgotPassword" component={ForgotPassword} /> */}
       </Stack.Navigator>
       {/* )} */}

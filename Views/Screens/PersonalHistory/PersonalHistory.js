@@ -10,7 +10,6 @@ import {
 import React, { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import CustomInput from "../../Components/CustomInput/CustomInput";
-import { button } from "../../src/Components/styles/Styles";
 import RadioGroup from "react-native-radio-buttons-group";
 import DropDown from "../../../assests/images/DropDown.png";
 
@@ -179,13 +178,12 @@ export default function PersonalHistory({ navigation }) {
             Married
           </Text>
         </TouchableOpacity>
-        <View>
-        </View>
+        <View></View>
       </ScrollView>
 
       <TouchableOpacity onPress={() => navigation.navigate("PersonalHistory")}>
-        <View style={button.primary}>
-          <Text style={button.Text}>Save</Text>
+        <View style={styles.primaryButton}>
+          <Text style={styles.buttonText}>Save</Text>
           <Image source={DropDown} />
         </View>
       </TouchableOpacity>
@@ -193,4 +191,28 @@ export default function PersonalHistory({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  primaryButton: {
+    marginTop: 15,
+    marginBottom: 10,
+    backgroundColor: "#4385B7",
+    height: 44,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+  },
+  buttonText: {
+    color: "white",
+  },
+  headerText: {
+    color: "#4385B7",
+    paddingTop: 30,
+    paddingBottom: 10,
+    textAlign: "left",
+    justifyContent: "flex-start",
+    fontSize: 20,
+    fontFamily: "Roboto",
+    fontWeight: "400",
+  },
+});

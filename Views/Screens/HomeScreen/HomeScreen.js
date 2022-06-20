@@ -7,7 +7,6 @@ import {
   Image,
   TouchableWithoutFeedback,
   FlatList,
-  Platform,
   TouchableOpacity,
 } from "react-native";
 import React, { useState, useEffect } from "react";
@@ -18,7 +17,6 @@ import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
-// import CircularProgress from "react-native-circular-progress-indicator";
 import * as ImagePicker from "expo-image-picker";
 
 import Profile from "../../../assests/images/profilePhoto.png";
@@ -284,7 +282,7 @@ export default function HomeScreen() {
             marginTop: 30,
             flexDirection: "row",
             borderRadius: 4,
-            height: 59,
+            height: 60,
           }}
         >
           {/* Onboarding */}
@@ -293,11 +291,14 @@ export default function HomeScreen() {
               backgroundColor: COLORS.white,
               flexDirection: "row",
               alignItems: "center",
-              padding: 20,
-              height: 51,
+              justifyContent: "center",
+              padding: 0,
+              padding: 4,
+              // height: 60,
               margin: 5,
               borderRadius: 4,
               alignItems: "center",
+              width: 170,
             }}
           >
             <View
@@ -317,7 +318,7 @@ export default function HomeScreen() {
                 resizeMode="contain"
               />
             </View>
-            <Text style={{ fontSize: 16, color: "#434343" }}>Onboarding</Text>
+            <Text style={{ fontSize: 16, color: "red" }}>Onboarding</Text>
           </View>
 
           {/* post onboarding */}
@@ -326,6 +327,7 @@ export default function HomeScreen() {
               flexDirection: "row",
               alignItems: "center",
               marginLeft: 5,
+              width: 180,
             }}
           >
             <View
@@ -352,9 +354,11 @@ export default function HomeScreen() {
             data={data}
             renderItem={renderItem}
             keyExtractor={(item, index) => index + item.title + ""}
+            style={{ padding: 0 }}
           />
         </View>
       </ScrollView>
+      {/* <CircularProgress/> */}
     </SafeAreaView>
   );
 }
